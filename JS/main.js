@@ -1,12 +1,32 @@
 // Styling
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
 $(document).ready(function() {
+  
+  window.scrollTo(0, 0);
+
   $(".main-container").css("padding-top", $(".nav-bar").height());
 
   $(".tile-text").css("height", $(".tile").height() / 4);
 
+  $(".nav-bar").addClass('animate');
+
   $(".tiles-container").addClass('animate');
 
   $(".welcome-container").addClass('animate');
+
+  $('body').addClass('no-scroll');
+
+  setTimeout(() => {
+    $('body').removeClass('no-scroll');
+    $(".nav-bar").removeClass('animate');
+    $(".nav-bar").css('opacity', '1');
+    if (lastScrollY < window.scrollY && window.scrollY > ($(".nav-bar").height() + $(".welcome-container").height())) {
+      $(".nav-bar").addClass('hidden');
+    }
+  }, 1500)
 });
 
 // Logo button interaction
@@ -52,15 +72,12 @@ observer.observe(welcomeText);
 let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.nav-bar');
-    
-    // If scrolling down and we're past 20px, hide the navbar
-    if (lastScrollY < window.scrollY && window.scrollY > ($(".nav-bar").height() + $(".welcome").height())) {
-        navbar.classList.add('hidden');
-    } else {
-        // If scrolling up or at the top, show the navbar
-        navbar.classList.remove('hidden');
-    }
-    
-    lastScrollY = window.scrollY;
+  const navbar = document.querySelector('.nav-bar');
+  if (lastScrollY < window.scrollY && window.scrollY > ($(".nav-bar").height() + $(".welcome-container").height())) {
+      navbar.classList.add('hidden');
+  } else {
+      navbar.classList.remove('hidden');
+  }
+
+  lastScrollY = window.scrollY;
 });
