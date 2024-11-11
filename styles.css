@@ -160,11 +160,28 @@ body{
     height: 2500px;
 }
 
-.welcome {
-    background-color: #0e0e0e;
+.welcome-container {
+    /* background-color: #0e0e0e; */
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
     display: grid;
     place-items: center;
-    height: 40vh;   
+    height: 40vh;
+    opacity: 0;
+}
+
+.welcome-container.animate {
+    animation: appear 0.5s cubic-bezier(.17,.67,.83,.67) forwards;
+    animation-delay: 0.5s;
+}
+
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .welcome-main-text {
@@ -203,6 +220,7 @@ body{
 
 .tiles-container {
     /* border: 1px solid white; */
+    /* background: linear-gradient(to bottom, #000000, #0e0e0e); */
     opacity: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -215,18 +233,18 @@ body{
     position: relative;
     overflow: hidden;
     border: 1px solid rgb(37, 37, 37);
-    background-color: #0e0e0e;
+    background-color: #0a0a0a;
     height: 200px;
     width: 100%;
     transition: 0.2s cubic-bezier(.17,.67,.83,.67);
-    font-family: Subj-Light;
+    font-family: Subj;
     display: grid;
     place-items: center;
 }
 
 .tiles-container.animate {
     animation: fadeInDown 0.8s cubic-bezier(.17,.67,.83,.67) forwards;
-    animation-delay: 0.6s;
+    animation-delay: 1s;
 }
 
 .tile-text {
@@ -244,7 +262,7 @@ body{
     cursor: pointer;
     transition: 0.2s cubic-bezier(.17,.67,.83,.67);
     transform: scale(1.07);
-    background-color: #1a1a1a;
+    background-color: #0e0e0e;
     border: 1px solid wheat;
 }
 

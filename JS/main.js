@@ -5,6 +5,8 @@ $(document).ready(function() {
   $(".tile-text").css("height", $(".tile").height() / 4);
 
   $(".tiles-container").addClass('animate');
+
+  $(".welcome-container").addClass('animate');
 });
 
 // Logo button interaction
